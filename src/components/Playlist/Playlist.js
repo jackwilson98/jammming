@@ -1,18 +1,29 @@
 import React from "react";
 import Track from "../Track/Track";
 
-const Playlist = ({ playlistTracks, onRemove }) => {
+const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange }) => {
+  const handleNameChange = (event) => {
+    onNameChange(event.target.value);
+  };
+
   return (
     <div>
-      <h2>Your Playlist</h2>
-      {playlistTracks.map(track => (
-        <Track 
-          key={track.id} 
-          track={track} 
-          onRemove={onRemove} 
-          isRemoval={true} // To indicate this track can be removed
+      <input
+        type="text"
+        value={playlistName}
+        onChange={handleNameChange}
+        placeholder="Enter Playlist Name"
+        style={{ fontSize: "1.5rem", marginBottom: "1rem" }}
+      />
+      {playlistTracks.map((track) => (
+        <Track
+          key={track.id}
+          track={track}
+          onRemove={onRemove}
+          isRemoval={true}
         />
       ))}
+      <button>Save to Spotify</button>
     </div>
   );
 };
