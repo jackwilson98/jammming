@@ -1,29 +1,23 @@
-import React from "react";
-import Track from "../Track/Track";
+// src/components/Playlist/Playlist.js
+import React from 'react';
+import Track from '../Track/Track';
 
-const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange }) => {
-  const handleNameChange = (event) => {
-    onNameChange(event.target.value);
+const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange, onSave }) => {
+  const handleNameChange = (e) => {
+    onNameChange(e.target.value);
   };
 
   return (
-    <div>
+    <div className="Playlist">
       <input
-        type="text"
         value={playlistName}
         onChange={handleNameChange}
         placeholder="Enter Playlist Name"
-        style={{ fontSize: "1.5rem", marginBottom: "1rem" }}
       />
-      {playlistTracks.map((track) => (
-        <Track
-          key={track.id}
-          track={track}
-          onRemove={onRemove}
-          isRemoval={true}
-        />
+      {playlistTracks.map(track => (
+        <Track key={track.id} track={track} onRemove={onRemove} isRemoval={true} />
       ))}
-      <button>Save to Spotify</button>
+      <button onClick={onSave}>Save to Spotify</button>
     </div>
   );
 };
