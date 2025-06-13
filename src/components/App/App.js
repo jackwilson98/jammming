@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Spotify from '../../utils/Spotify'
+import Spotify from '../../util/Spotify'
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist';
@@ -42,17 +42,19 @@ function App() {
 
   return (
     <div>
-      <a href="https://github.com/connorads/jamming" alt="Jamming GitHub Repo">
-        <img src="./github.png" alt="GitHub Mark" height="56" align="right"/>
+      <a href="https://github.com">
+        <img src="./github.png" alt="GitHub Mark" height="56" align="right" />
       </a>
-      <h1>Ja<span className="highlight">mm</span>ing</h1>
+      <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
-        <SearchBar searchSpotify={searchSpotify}/>
+        <SearchBar searchSpotify={searchSpotify} />
         <div className="App-playlist">
-          <SearchResults tracks={searchedTracks} addTrackToPlaylist={addTrackToPlaylist}/>
-          <Playlist tracks={playlistTracks}
-          removeTrackFromPlaylist={removeTrackFromPlaylist}
-          createSpotifyPlaylist={createSpotifyPlaylist}/>
+          <SearchResults tracks={searchedTracks} addTrackToPlaylist={addTrackToPlaylist} />
+          <Playlist
+            tracks={playlistTracks}
+            removeTrackFromPlaylist={removeTrackFromPlaylist}
+            createSpotifyPlaylist={createSpotifyPlaylist}
+          />
         </div>
       </div>
     </div>
